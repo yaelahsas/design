@@ -17,13 +17,29 @@ use Illuminate\Support\Facades\Storage;
 */
 
 Route::post('/save-screenshot', function (Request $request) {
-    // decode your image first.
-    $imagedata = base64_decode($_REQUEST['base64data']);
-    // make random name
-    $filename = md5(uniqid(rand(), true));
-    //path where you want to upload image
-    $file = $_SERVER['DOCUMENT_ROOT'] . ''.$filename.'.png';
-    file_put_contents($file,$imagedata);
+    // // decode your image first.
+    // $imagedata = base64_decode($_REQUEST['base64data']);
+    // // make random name
+    // $filename = md5(uniqid(rand(), true));
+    // //path where you want to upload image
+    // $file = $_SERVER['DOCUMENT_ROOT'] . ''.$filename.'.png';
+    // file_put_contents($file,$imagedata);
+    // $image = $_POST['image'];
+
+    $image = $_POST['image'];
+
+    // $location = $_SERVER['DOCUMENT_ROOT'];
+    $location = "_";
+    
+    $image_parts = explode(";base64,", $image);
+    
+    $image_base64 = base64_decode($image_parts[1]);
+    
+    $filename = "baju_".uniqid().'.png';
+    
+    $file = $location . $filename;
+    
+    file_put_contents($file, $image_base64);
 });
 
 Route::view('/edit', 'app');

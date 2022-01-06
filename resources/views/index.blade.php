@@ -512,23 +512,40 @@
                 // html2canvas(element).then(function(canvas) {
                 //     document.body.appendChild(canvas);
                 // });
-                html2canvas(element)
-                    .then(canvas => {
-                        let data = new FormData();
-                        data.set('image', canvas.toDataURL("image/jpeg", 1));
+                // html2canvas(element)
+                //     .then(canvas => {
+                //         let data = new FormData();
+                //         data.set('image', canvas.toDataURL("image/jpeg", 1));
                     
-                        axios.post('/save-screenshot', data, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                                // 'token': $("meta[name='csrf-token']").attr("content"),
-                            }
-                        })
-                        .then((data) => {
-                            console.log('message: ', data.data.message);
-                        })
-                        .catch(error => {
-                            console.log('error: ', error);
-                        })
+                //         axios.post('/save-screenshot', data, {
+                //             headers: {
+                //                 'Content-Type': 'multipart/form-data',
+                //                 // 'token': $("meta[name='csrf-token']").attr("content"),
+                //             }
+                //         })
+                //         .then((data) => {
+                //             console.log('message: ', data.data.message);
+                //         })
+                //         .catch(error => {
+                //             console.log('error: ', error);
+                //         })
+                //     });
+                
+
+                    html2canvas(element).then(function(canvas) {
+                        var base64URL = canvas.toDataURL('image/jpeg').replace('image/jpeg', 'image/octet-stream');
+
+                                // AJAX request
+                                $.ajax({
+                                    url: '/save-screenshot',
+                                    type: 'post',
+                                    data: {image: base64URL,_token: '{{csrf_token()}}'},
+                                    success: function(data){
+                                        // console.log('Upload successfully');
+                                        alert('Success!');
+                                    }
+                                });
+                            console.log(base64URL);
                     });
             });
 
