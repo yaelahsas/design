@@ -542,7 +542,7 @@
                                     data: {image: base64URL,_token: '{{csrf_token()}}'},
                                     success: function(data){
                                         // console.log('Upload successfully');
-                                        alert('Success!');
+                                        alert('File berhasil didownload silahkan cek ke download anda');
                                     }
                                 });
                             console.log(base64URL);

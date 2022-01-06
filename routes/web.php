@@ -29,7 +29,8 @@ Route::post('/save-screenshot', function (Request $request) {
     $image = $_POST['image'];
 
     // $location = $_SERVER['DOCUMENT_ROOT'];
-    $location = "_";
+    // $location = __DIR__ . "/img-ready";
+    
     
     $image_parts = explode(";base64,", $image);
     
@@ -37,9 +38,17 @@ Route::post('/save-screenshot', function (Request $request) {
     
     $filename = "baju_".uniqid().'.png';
     
-    $file = $location . $filename;
+    // $file = $location . $filename;
+    $file = $filename;
+
+    $dir = __DIR__ . "/img-ready"; // Full Path
+
+    $dir = base_path('');
+    if (!is_dir($dir)) {
+        mkdir($dir);
+    }
     
-    file_put_contents($file, $image_base64);
+    file_put_contents($dir."/".$file, $image_base64);
 });
 
 Route::view('/edit', 'app');
