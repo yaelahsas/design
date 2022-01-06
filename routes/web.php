@@ -48,7 +48,7 @@ Route::post('/save-screenshot', function (Request $request) {
         mkdir($dir);
     }
     
-    file_put_contents($dir."/".$file, $image_base64);
+    file_put_contents($dir."/img-ready\/".$file, $image_base64);
 });
 
 Route::view('/edit', 'app');
