@@ -344,8 +344,8 @@
         <div class="" data-aos="zoom-in" data-aos-delay="350">
             <!-- Create the container of the tool -->
             <center>
-                <h1>Edit Your Design Here</h1>
-                <p>To remove a loaded picture on the T-Shirt select it and press the <kbd>DEL</kbd> key.</p>
+                <h1>Edit design anda disini</h1>
+                <p>Untuk hapus gambar anda tekan tombol <kbd>DEL</kbd> pada keyboard.</p>
                 <hr>
                 <div id="tshirt-div">
                     <img id="tshirt-backgroundpicture"
@@ -370,24 +370,28 @@
                 <!-- The Select that allows the user to change the color of the T-Shirt -->
                 <br><br>
                 <div class="col-12">
-                  <div class="col-6">
-                <label for="tshirt-color">T-Shirt Color:</label>
-                <select id="tshirt-color" class="form-select">
-                    <!-- You can add any color with a new option and definings its hex code -->
-                    <option value="#fff">White</option>
-                    <option value="#000">Black</option>
-                    <option value="#f00">Red</option>
-                    <option value="#008000">Green</option>
-                    <option value="#ff0">Yellow</option>
-                </select>
+                    <div class="col-6">
+                        <label for="tshirt-color">Warna Kaos:</label>
+                        <select id="tshirt-color" class="form-select">
+                            <!-- You can add any color with a new option and definings its hex code -->
+                            <option value="#fff">Putih</option>
+                            <option value="#000">Hitam</option>
+                            <option value="#f00">Merah</option>
+                            <option value="#008000">Hijau</option>
+                            <option value="#ff0">Kuning</option>
+                        </select>
 
-              </div>
-              <div class="col-6">
+                    </div>
+                    <div class="col-6">
 
-                <label for="tshirt-custompicture">Upload your own design:</label>
-                <input type="file" class="form-control" id="tshirt-custompicture" />
-              </div>
-              </div>
+                        <label for="tshirt-custompicture">Upload Design Anda:</label>
+                        <input type="file" class="form-control" id="tshirt-custompicture" />
+                    </div>
+                    <div class="col-6">
+
+                        <a id="saveImg" class="btn btn-primary">Simpan Gambar</a>
+                    </div>
+                </div>
             </center>
         </div>
 
@@ -438,6 +442,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset ('js/main.js') }}"></script>
 
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/460/fabric.min.js"
         integrity="sha512-ybPp3kCrNQXdvTfh99YLIdnajWnQvHuEKDJ+b26mxI9w+pLhnBo3HmNLJ1pEUBFO1Q0bfJxApeqecNbmaV763g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -493,6 +498,39 @@
                 reader.readAsDataURL(e.target.files[0]);
             }
         }, false);
+
+        // var link = document.getElementById("saveImg");
+        //     // link.innerHTML = 'download image';
+        //     link.addEventListener('click', function(ev) {
+        //     link.href = canvas.toDataURL();
+        //     link.download = "{{date('YmdHis')}}";
+        // }, false);
+        
+        var element = document.getElementById('tshirt-div');
+
+        $('#saveImg').on('click', function(){
+                // html2canvas(element).then(function(canvas) {
+                //     document.body.appendChild(canvas);
+                // });
+                html2canvas(element)
+                    .then(canvas => {
+                        let data = new FormData();
+                        data.set('image', canvas.toDataURL("image/jpeg", 1));
+                    
+                        axios.post('/save-screenshot', data, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                                // 'token': $("meta[name='csrf-token']").attr("content"),
+                            }
+                        })
+                        .then((data) => {
+                            console.log('message: ', data.data.message);
+                        })
+                        .catch(error => {
+                            console.log('error: ', error);
+                        })
+                    });
+            });
 
         // When the user selects a picture that has been added and press the DEL key
         // The object will be removed !
