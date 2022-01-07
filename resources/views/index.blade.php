@@ -383,12 +383,21 @@
 
                     </div>
                     <div class="col-6">
-
                         <label for="tshirt-custompicture">Upload Design Anda:</label>
                         <input type="file" class="form-control" id="tshirt-custompicture" />
                     </div>
+                    <br>
+                    <div class="col-6 row">
+                        <input type="color" value="blue" id="fill" class="form-control col-4 m-1"/>
+                        <select id="font" class="form-control col-3 m-1">
+                            <option>arial</option>
+                            <option>tahoma</option>
+                            <option>times new roman</option>
+                        </select>
+                        <button class="btn btn-success col-4 m-1" onclick="addText()">Add Custom Text</button>
+                    </div>
+                    <br>
                     <div class="col-6">
-
                         <a id="saveImg" class="btn btn-primary">Simpan Gambar</a>
                     </div>
                 </div>
@@ -499,6 +508,41 @@
             }
         }, false);
 
+        $('#fill').change(function(){
+                var obj = canvas.getActiveObject();
+
+                if(obj){
+                    // old api
+                    // obj.setFill($(this).val());
+                    obj.set("fill", this.value);
+                }
+                canvas.renderAll();
+                });
+
+                $('#font').change(function(){
+                var obj = canvas.getActiveObject();
+                
+                if(obj){
+                    // old api
+                    // obj.setFontFamily($(this).val());
+                    obj.set("fontFamily", this.value);
+                }
+                
+                canvas.renderAll();
+                });
+
+                function addText() {
+                var oText = new fabric.IText('Tap and Type', { 
+                    left: 100, 
+                    top: 100 ,
+                });
+
+                canvas.add(oText);
+                oText.bringToFront();
+                canvas.setActiveObject(oText);
+                $('#fill, #font').trigger('change');
+                }
+            
         // var link = document.getElementById("saveImg");
         //     // link.innerHTML = 'download image';
         //     link.addEventListener('click', function(ev) {
