@@ -346,6 +346,21 @@
             <center>
                 <h1>Edit design anda disini</h1>
                 <p>Untuk hapus gambar anda tekan tombol <kbd>DEL</kbd> pada keyboard.</p>
+                <div class="col-12">
+                    <div class="col-6">
+                        <label for="tshirt-kind">Jenis:</label>
+                        <select id="tshirt-kind" class="form-select">
+                            <!-- You can add any color with a new option and definings its hex code -->
+                            <option value="{{ url('/img/background_tshirt.png') }}">Kaos</option>
+                            <option value="{{ url('/img/background_hoodie.png') }}">Hoodie</option>
+                            <option value="{{ url('/img/background_polo.png') }}">Polo</option>
+                            <option value="{{ url('/img/background_singlet.png') }}">Singlet</option>
+                            <option value="{{ url('/img/background_jacket.png') }}">Jaket   </option>
+                            <option value="{{ url('/img/background_sweater.png') }}">Sweater   </option>
+                        </select>
+
+                    </div>
+                </div>
                 <hr>
                 <div id="tshirt-div">
                     <img id="tshirt-backgroundpicture"
@@ -457,6 +472,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
+        document.getElementById("tshirt-kind").addEventListener("change", function () {
+            console.log("AJNEG");
+            document.getElementById("tshirt-backgroundpicture").src = this.value;
+        }, false);
+
         let canvas = new fabric.Canvas('tshirt-canvas');
 
         function updateTshirtImage(imageURL) {
