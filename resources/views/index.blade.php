@@ -8,6 +8,7 @@
     <title>Ilmia Novida Sari - Web Desain</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicons -->
     <link href="{{ asset ('img/favicon.png') }}" rel="icon">
@@ -59,9 +60,10 @@
             user-select: none;
         }
 
+        /* Tempat Menaruh Warna */
         #tshirt-div {
-            width: 452px;
-            height: 548px;
+            width: 500px;
+            height: 620px;
             position: relative;
             background-color: #fff;
         }
@@ -231,20 +233,20 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset ('img/portfolio/portfolio-5.jpg') }}"
+                            <img src="{{ asset ('img/jacket.png') }}"
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Web 2</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ asset ('img/portfolio/portfolio-5.jpg') }}"
+                                    <a href="{{ asset ('img/jacket.png') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i
                                             class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" class="portfolio-details-lightbox"
                                         data-glightbox="type: external" title="Portfolio Details"><i
                                             class="bx bx-link"></i></a>
                                     <a href="#edit"> <i class="bx bx-edit"
-                                            onclick="myFunction('{{ asset ('img/portfolio/portfolio-5.jpg') }}')"></i></a>
+                                            onclick="gantiBG('{{ asset ('img/jacket.png') }}')"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -252,20 +254,20 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset ('img/portfolio/portfolio-6.jpg') }}"
+                            <img src="{{ asset ('img/bomber.png') }}"
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>App 3</h4>
                                 <p>App</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ asset ('img/portfolio/portfolio-6.jpg') }}"
+                                    <a href="{{ asset ('img/bomber.png') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i
                                             class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" class="portfolio-details-lightbox"
                                         data-glightbox="type: external" title="Portfolio Details"><i
                                             class="bx bx-link"></i></a>
                                     <a href="#edit"> <i class="bx bx-edit"
-                                            onclick="myFunction('{{ asset ('img/portfolio/portfolio-6.jpg') }}')"></i></a>
+                                            onclick="gantiBG('{{ asset ('img/bomber.png') }}')"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -273,20 +275,20 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset ('img/portfolio/portfolio-7.jpg') }}"
+                            <img src="{{ asset ('img/sweatshirt.png') }}"
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Card 1</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ asset ('img/portfolio/portfolio-7.jpg') }}"
+                                    <a href="{{ asset ('img/sweatshirt.png') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i
                                             class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" class="portfolio-details-lightbox"
                                         data-glightbox="type: external" title="Portfolio Details"><i
                                             class="bx bx-link"></i></a>
                                     <a href="#edit"> <i class="bx bx-edit"
-                                            onclick="myFunction('{{ asset ('img/portfolio/portfolio-7.jpg') }}')"></i></a>
+                                            onclick="gantiBG('{{ asset ('img/sweatshirt.png') }}')"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -294,20 +296,20 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-card">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset ('img/portfolio/portfolio-8.jpg') }}"
+                            <img src="{{ asset ('img/polo.png') }}"
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Card 3</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ asset ('img/portfolio/portfolio-8.jpg') }}"
+                                    <a href="{{ asset ('img/polo.png') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i
                                             class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" class="portfolio-details-lightbox"
                                         data-glightbox="type: external" title="Portfolio Details"><i
                                             class="bx bx-link"></i></a>
                                     <a href="#edit"> <i class="bx bx-edit"
-                                            onclick="myFunction('{{ asset ('img/portfolio/portfolio-8.jpg') }}')"></i></a>
+                                            onclick="gantiBG('{{ asset ('img/polo.png') }}')"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -315,20 +317,20 @@
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                         <div class="portfolio-wrap">
-                            <img src="{{ asset ('img/portfolio/portfolio-9.jpg') }}"
+                            <img src="{{ asset ('img/hoodie.png') }}"
                                 class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4>Web 3</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="{{ asset ('img/portfolio/portfolio-9.jpg') }}"
+                                    <a href="{{ asset ('img/hoodie.png') }}"
                                         data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i
                                             class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" class="portfolio-details-lightbox"
                                         data-glightbox="type: external" title="Portfolio Details"><i
                                             class="bx bx-link"></i></a>
                                     <a href="#edit"> <i class="bx bx-edit"
-                                            onclick="myFunction('{{ asset ('img/portfolio/portfolio-9.jpg') }}')"></i></a>
+                                            onclick="gantiBG('{{ asset ('img/hoodie.png') }}')"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +342,7 @@
         </section><!-- End Portfolio Section -->
 
     </main><!-- End #main -->
-    <section id="portfolio" style="background: #FFF;">
+    <section id="edit" style="background: #FFF;">
         <div class="" data-aos="zoom-in" data-aos-delay="350">
             <!-- Create the container of the tool -->
             <center>
@@ -368,7 +370,7 @@
 
                     <div id="drawingArea" class="drawing-area">
                         <div class="canvas-container">
-                            <canvas id="tshirt-canvas" width="200" height="400"></canvas>
+                            <canvas id="tshirt-canvas" width="400" height="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -395,7 +397,7 @@
                             <option value="#008000">Hijau</option>
                             <option value="#ff0">Kuning</option>
                         </select>
-
+                        <input type="color" value="blue" id="kaos" class="form-control col-4 m-1"/>
                     </div>
                     <div class="col-6">
                         <label for="tshirt-custompicture">Upload Design Anda:</label>
@@ -412,8 +414,11 @@
                         <button class="btn btn-success col-4 m-1" onclick="addText()">Add Custom Text</button>
                     </div>
                     <br>
-                    <div class="col-6">
-                        <a id="saveImg" class="btn btn-primary">Simpan Gambar</a>
+                    <div class="col-6 row">
+                        <a  class="btn btn-danger" onclick="donlot('design.jpeg')">Simpan Jpeg</a>
+                        <a class="btn btn-success" onclick="donlot('design.png')">Simpan PNG</a>
+                        <a  class="btn btn-primary" onclick="cetakPDF()" >Simpan PDF</a>
+
                     </div>
                 </div>
             </center>
@@ -466,6 +471,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset ('js/main.js') }}"></script>
 
+
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/460/fabric.min.js"
         integrity="sha512-ybPp3kCrNQXdvTfh99YLIdnajWnQvHuEKDJ+b26mxI9w+pLhnBo3HmNLJ1pEUBFO1Q0bfJxApeqecNbmaV763g=="
@@ -489,6 +495,9 @@
             });
         }
 
+function gantiBG(urlnya){
+    document.getElementById("tshirt-backgroundpicture").src = urlnya;
+}
         // Update the TShirt color according to the selected color by the user
         document.getElementById("tshirt-color").addEventListener("change", function () {
             document.getElementById("tshirt-div").style.backgroundColor = this.value;
@@ -539,6 +548,14 @@
                 canvas.renderAll();
                 });
 
+
+                // warna kaos diubah sesuai pilihan
+                $('#kaos').change(function(){
+                   
+            document.getElementById("tshirt-div").style.backgroundColor = this.value;
+       
+                });
+             
                 $('#font').change(function(){
                 var obj = canvas.getActiveObject();
                 
@@ -612,6 +629,66 @@
                             console.log(base64URL);
                     });
             });
+
+// Download nya
+
+function donlot(namanya){
+    html2canvas(element).then(function(canvas) {
+                        var base64URL = canvas.toDataURL('image/jpeg').replace('image/jpeg', 'image/octet-stream');
+
+                              
+                        var a = document.createElement("a"); //Create <a>
+                        a.href =  base64URL; //Image Base64 Goes here
+                        a.download = namanya; //File name Here
+                        a.click();
+                            console.log(base64URL);
+                    });
+  
+}
+
+function cetakPDF(){
+    html2canvas(element).then(function(canvas) {
+                        var base64URL = canvas.toDataURL('image/jpeg');
+
+//                         $.ajax({
+//                             headers: {
+//     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//   },
+//         dataType: 'json',
+//         type: 'POST',
+//         url: '/cetak',
+//         data: {
+//             data1: base64URL
+//         },
+//         success: function (sukses) {          
+//            console.log("sukses")
+//         },
+//         failure: function (response) {          
+//             console.log(response)
+            
+//         }
+//     }); 
+var form = new FormData();
+form.append("gambar",base64URL);
+
+console.log(base64URL)
+var settings = {
+  "url": "http://localhost:8000/cetak",
+  "method": "POST",
+  "timeout": 0,
+  "processData": false,
+  "mimeType": "multipart/form-data",
+  "contentType": false,
+  "data": form
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  window.location = 'design.pdf';
+});
+                    });
+  
+}
 
         // When the user selects a picture that has been added and press the DEL key
         // The object will be removed !
